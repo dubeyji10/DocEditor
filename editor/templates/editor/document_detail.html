@@ -1,16 +1,13 @@
 {% extends "editor/base.html" %}
 {% block content %}
 
+
 <div class="media content-section">
 
 
-
-
-    <img class = "rounded-circle article-img" src = "{{ object.author.profile.image.url }}">
+    <img class = "rounded" src = "{{ object.author.profile.image.url }}">
     <div class="media-body">
         <div class="article-metadata">
-            <a class="mr-2" href="#">{{ object.author }}</a>
-            <small class="text-muted">{{ object.date_posted |date:"F d, Y"}}</small>
 
             {% if user.is_authenticated %}
             <div>
@@ -24,21 +21,36 @@
             </div>
             {% endif %}
         </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h2 class="article-title" >{{ object.title }}</h2>
+        Published by <a class="mr-2" href="{% url 'user-documents' object.author.username %}">{{ object.author }}</a>
+        on <span color="#ccf1f1"> <small class="text-muted">{{ object.date_posted |date:"F d, Y"}}</small> </span>
 
-        <h2 class="article-title" href="#">{{ object.title }}</h2>
-        <br> <div style= "color:#2ef5d7;"> __________________________________________________________________ </div>
+
+        {% if object.last_change_details %}
+        <div id ="132" style="position: center; color: #ff1111; padding-left:1000px">
+            last changes were made by {{ object.last_change_details|safe|truncatewords:"10" }}
+        </div>
+        {% endif %}
+        <div>
+            Not visible properly? try
+            <input type="button" onclick="ChangeColor()" value="Button" id="btn1" />
+        </div>
+
+        <br> <div style= "color:#2ef5d7;">  </div>
         <p class="content">
             <br>{{ object.content|safe|linebreaks }}
         </p>
-        <br> <div style= "color:#11ffdb;"> __________________________________________________________________ </div>
+        <br>
+        <div style= "color:#11ffdb;">
+            ___________________________________________________________________________________________________________
+        </div>
     </div>
-        {% if object.last_change_details %}
-                <div style="position: fixed; color: #ffff11">
-                    last changes made by:<br>
-                    {{ object.last_change_details|safe|linebreaks }}
 
-                </div>
-        {% endif %}
 </div>
 
 {% endblock content %}

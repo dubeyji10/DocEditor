@@ -10,12 +10,14 @@ body {
   h1, h2, h3 {
     color: #030202;
     font-family: Arial, Helvetica, sans-serif;
+    position: relative;
   }
   
-  h4, h5, h6{
-    color:#020302; /* #13e4c1;*/
-    font-family: Helvetica;
-  }
+  /*h4, h5, h6{*/
+  /*  color:#020302; !* #13e4c1;*!*/
+  /*  font-family: Helvetica;*/
+  /*}*/
+
   ul {
     margin: 0;
   }

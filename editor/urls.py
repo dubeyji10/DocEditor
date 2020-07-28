@@ -14,6 +14,7 @@ urlpatterns = [
     path('document/<int:pk>/',views.DocumentDetailView.as_view(),name = 'document-detail'),
     path('document/new/',views.DocumentCreateView.as_view(),name = 'document-create'),
     path('document/<int:pk>/update',views.DocumentUpdateView.as_view(),name = 'document-update'),
+    path('user/<str:username>',views.UserDocumentListView.as_view(),name='user-documents'),
 ]
 
 

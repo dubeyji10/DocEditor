@@ -28,7 +28,7 @@
 body {
     /*background: #333;*/
     color: #000000;
-    background: -webkit-linear-gradient(rgb(232, 216, 216), rgb(73, 245, 238), rgb(108, 243, 183), rgb(252, 215, 80));
+    background: -webkit-linear-gradient(0deg, rgb(80, 252, 232),rgb(232, 216, 216), rgb(73, 245, 238), rgb(109, 234, 182), rgb(252, 149, 80), rgb(252, 215, 80));
     background-size: 100%;
 }
 
