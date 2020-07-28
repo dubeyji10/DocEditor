@@ -1,0 +1,56 @@
+{% extends "editor/base.html" %}
+{% block content %}
+<span style="color: #ff1; padding-left: 20px"> _____________________________________________ </span>
+{% for document in documents %}
+
+
+    <div style="padding-left: 20px">
+        <div>
+            <div>
+                <a class="mr-2" style="color:aqua;font-family:'Atomic Age',san-serif;" href="#">{{ document.author }}</a>
+                <small style="color:beige;font-family:'IM Fell English SC',san-serif;" class="text-muted">
+                    {{ document.date_posted |date:"F d, Y"}}</small>
+            </div>
+            <h2>
+                <a href="{% url 'document-detail' document.id %}">
+                    <font color = "#cc1">{{ document.title }} </font>
+                </a>
+            </h2>
+                    <div>
+                    <div class='article'>
+                        <div>
+                            <a href="{% url 'document-detail' pk=document.pk %}">   ..... read more</a>
+                        </div>
+
+                    </div>
+            </div>
+    </div>
+<div style="color: #00ffdd;"> _____________________________________________ </div>
+</div>
+
+{% endfor %}
+<br><br>
+{% if is_paginated %}
+
+{% if page_obj.has_previous %}
+<a href="?page=1" class = "btn btn-outline-info mb-4">First</a>
+<a href="?page={{ page_obj.previous_page_number }}" class = "btn btn-outline-info mb-4">Previous</a>
+{% endif %}
+
+{% for num in page_obj.paginator.page_range %}
+{% if page_obj.number == num %}
+<a href="?page={{ num }}" style="background:aqua ;color:black;" class = "btn btn-info mb-4">{{ num }}</a>
+{% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+<a href="?page={{ num }}" style="background:aqua ;color:black;" class = "btn btn-info mb-4">{{ num }}</a>
+{% endif %}
+{% endfor %}
+
+{% if page_obj.has_next %}
+<a href="?page={{ page_obj.next_page_number }}" class = "btn btn-outline-info mb-4">Next</a>
+<a href="?page={{ page_obj.paginator.num_pages }}" class = "btn btn-outline-info mb-4">Last</a>
+{% endif %}
+
+{% endif %}
+
+{% endblock content %}
+

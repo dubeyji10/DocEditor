@@ -1,0 +1,47 @@
+{% extends "editor/newBase.html" %}
+{% block content %}
+{% for document in documents %}
+<div class="media content-section">
+    <img class = "rounded-circle article-img" src = "{{ document.author.profile.image.url }}">
+    <div class="media-body">
+        <div class="article-metadata">
+            <a class="mr-2" href="#">{{ document.author }}</a>
+            <small class="text">{{ document.date_posted |date:"F d, Y"}}</small>
+        </div>
+        <h2><a class="article-title" href="{% url 'document-detail' document.id %}">{{ document.title }}</a></h2>
+
+        <div class='article'>
+            <div>
+                <a href="{% url 'document-detail' pk=document.pk %}">   ..... read more</a>
+            </div>
+                <br>
+                <div style="color:#ff1;">
+                    <br> <br> ................. display this message .................... <br> <br>
+                </div>
+        </div>
+</div>
+{% endfor %}
+
+{% if is_paginated %}
+
+{% if page_obj.has_previous %}
+<a href="?page=1" class = "btn btn-outline-info mb-4">First</a>
+<a href="?page={{ page_obj.previous_page_number }}" class = "btn btn-outline-info mb-4">Previous</a>
+{% endif %}
+
+{% for num in page_obj.paginator.page_range %}
+{% if page_obj.number == num %}
+<a href="?page={{ num }}" class = "btn btn-info mb-4">{{ num }}</a>
+{% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+<a href="?page={{ num }}" class = "btn btn-info mb-4">{{ num }}</a>
+{% endif %}
+{% endfor %}
+
+{% if page_obj.has_next %}
+<a href="?page={{ page_obj.next_page_number }}" class = "btn btn-outline-info mb-4">Next</a>
+<a href="?page={{ page_obj.paginator.num_pages }}" class = "btn btn-outline-info mb-4">Last</a>
+{% endif %}
+
+{% endif %}
+
+{% endblock content %}
