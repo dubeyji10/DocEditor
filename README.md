@@ -6,4 +6,6 @@
 <li>Hassle Free editting </li>
 </ul>
 
-<h2> [visit](http://dubeyji.pythonanywhere.com/home/) </h2>
+
+[Visit Now](http://dubeyji.pythonanywhere.com/)
+
