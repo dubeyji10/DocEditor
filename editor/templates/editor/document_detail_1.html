@@ -1,6 +1,6 @@
 {% extends "editor/base.html" %}
 {% block content %}
-{% load static %}
+
 
 <div class="media content-section">
 
@@ -9,48 +9,41 @@
     <div class="media-body">
         <div class="article-metadata">
 
-
-        </div>
-        <br>
-        <br>
-        <br>
-
-        <h2 class="article-title" style="padding-left: 400px; font-size: 7.4em;" >{{ object.title }}</h2>
-        <div style= "color:#11ffdb;">
-            ___________________________________________________________________________________________________________
-        </div>
-        <br>
-    <div>
-        <a class="" target="_blank" href="{% url 'document-download3' object.id %}">
-            <img src="{% static 'editor/downloadbutton.png' %}" style="height: 77px;width: 107px;" title="Download"/>
-        </a>
-        <br>
-    </div>
-        <div style="padding-left:19px;padding-bottom: 40px;">
             {% if user.is_authenticated %}
+            <div style="padding-left: 100px">
+                <a class = "btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'document-update' object.id %}"> Update</a>
 
-            <a class = "btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'document-update' object.id %}">-Edit-</a>
+                {% endif %}
 
-            {% endif %}
+                {% if object.author == user %}
 
-            {% if object.author == user %}
+                    <a class = "btn btn-danger btn-sm mt-1 mb-1" href="#"> Delete</a>
+                {% endif %}
+            </div>
 
-            <a class = "btn btn-danger btn-sm mt-1 mb-1" href="#">-Delete-</a>
-            {% endif %}
         </div>
+        <br>
+        <br>
+        <br>
+        <div style="padding-right:850px;background-color: #050c06;color:#2bffb0;">
 
+            <a class="logo" target="_blank" href="{% url 'document-download3' object.id %}">- Third download button-</a>
+
+        </div>
+        <br>
+        <br>
+        <h2 class="article-title" >{{ object.title }}</h2>
         Published by <a class="mr-2" href="{% url 'user-documents' object.author.username %}">{{ object.author }}</a>
         on <span color="#ccf1f1"> <small class="text-muted">{{ object.date_posted |date:"F d, Y"}}</small> </span>
 
 
         {% if object.last_change_details %}
-        <br>
         <div id ="132" style="position: center; color: #ff1111; padding-left:800px">
-           <br> Changes to Document Made by:<br>
+            Changes to Document Made by:<br>
            {{ object.last_change_details }}
             {{ object.last_change_details.user|safe }}
             {{ object.last_change_details.timestamp|date }}
-        <br>
+
         </div>
         {% endif %}
         <div>
@@ -60,9 +53,7 @@
 
         <br> <div style= "color:#2ef5d7;">  </div>
         <p class="content">
-            <br>
-            {{ object.content|safe|linebreaks }}
-            <br>
+            <br>{{ object.content|safe|linebreaks }}
         </p>
         <br>
         <div style= "color:#11ffdb;">

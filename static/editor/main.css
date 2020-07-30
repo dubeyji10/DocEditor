@@ -1,18 +1,23 @@
 body {
-    background: #f0eaea;
-    color: #111010;
-    margin-top: 5rem;
+    /*background: #f0eaea;*/
+  background: #b16262;
+  /*color: #111010;*/
+  color: #d7c4c4;
+
+  margin-top: 5rem;
   }
   
   h1, h2, h3 {
     color: #030202;
     font-family: Arial, Helvetica, sans-serif;
+    position: relative;
   }
   
-  h4, h5, h6{
-    color:#020302; /* #13e4c1;*/
-    font-family: Helvetica;
-  }
+  /*h4, h5, h6{*/
+  /*  color:#020302; !* #13e4c1;*!*/
+  /*  font-family: Helvetica;*/
+  /*}*/
+
   ul {
     margin: 0;
   }

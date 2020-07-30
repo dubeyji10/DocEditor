@@ -7,8 +7,11 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import timedelta as tdelta
 # from djrichtextfield.models import RichTextField
-
+from django.core.files import File
+from django.utils import timezone
+from urllib.request import urlretrieve
 from ckeditor.fields import RichTextField
+
 # import secretballot
 
 class Document(models.Model):
@@ -21,7 +24,7 @@ class Document(models.Model):
     # likes = models.PositiveIntegerField(default=0)
     # trying saving update changes
     last_change_details = models.TextField(null=True,blank=True)
-
+    # last_change_details = []
     def __str__(self):
         return f'{self.user.username} Profile'
 
@@ -50,66 +53,10 @@ class Document(models.Model):
     def get_absolute_url(self):
         return reverse('document-detail',kwargs={'pk':self.pk})
 
-    # def approved_comments(self):
-    #     return self.comments.filter(approved_comment=True)
+    # signed_file = models.FileField(upload_to="docs/%Y-%m-%d%/%H-%M-%S/",blank=True, null=True)
     #
-    # def get_likes(self):
-    #     p = self.likes
-    #     number_of_likes = p.like_set.all().count()
-    #     return number_of_likes
-#
-# class Comment(models.Model):
-#     post = models.ForeignKey('blog.Post', on_delete=models.CASCADE, related_name='comments')
-#     author = models.CharField(max_length=200)
-#     text = models.TextField()
-#     created_date = models.DateTimeField(default=timezone.now)
-#     approved_comment = models.BooleanField(default=False)#try True here
-#
-#     def approve(self):
-#         self.approved_comment = True
-#         self.save()
-#
-#     def __str__(self):
-#         return self.text
-#
-# # --------------- 7 July ---------------------------------
-#
-# class Like(models.Model):
-#     '''
-#     Class defines the structure of a like on a an posted Image
-#     '''
-#     user = models.ForeignKey(User,on_delete=models.CASCADE, null= True)
-#
-#     post = models.ForeignKey(Post,on_delete=models.CASCADE, null = True)
-#
-#     def __int__(self):
-#         return self.user.username
-#
-#     def save_like(self):
-#         self.save()
-#
-#     def unlike(self):
-#         self.delete()
-#
-#     def like(self):
-#         self.likes_number = 2
-#         self.save()
-#
-#     @classmethod
-#     def get_likes(cls,pk):
-#         '''
-#         Function that get likes belonging to a paticular posts
-#         '''
-#         likes = cls.objects.filter(post = pk)
-#         return likes
-#
-#
-    # class Like(models.Model):
-#     # user = models.ForeignKey(User, on_delete=models.CASCADE,)
-#     post = models.ForeignKey('blog.Post', on_delete=models.CASCADE, related_name='likes')
-#     # picture = models.ForeignKey(Picture)
-#     created_date = models.DateTimeField(auto_now_add=True)
-#     def approve(self):
-#         self.approved_comment = True
-#         self.save()
-
+    #
+    # def download_to_local(self,url):
+    #     name, _ = urlretrieve(url)
+    #     self.signed_file.save("{}.pdf".format(timestamp=timezone.now().strftime('%Y-%m-%d%/%H-%M-%S')),File(open(name, 'rb')))
+    #     print("------  saved   ------")

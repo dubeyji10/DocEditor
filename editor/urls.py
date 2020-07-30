@@ -15,6 +15,12 @@ urlpatterns = [
     path('document/new/',views.DocumentCreateView.as_view(),name = 'document-create'),
     path('document/<int:pk>/update',views.DocumentUpdateView.as_view(),name = 'document-update'),
     path('user/<str:username>',views.UserDocumentListView.as_view(),name='user-documents'),
+    path('document/<int:pk>/download',views.DocumentDownload.as_view(),name = 'document-download'),
+    path('document/<int:pk>/download2/',views.DocumentDownload2,name = 'document-download2'),
+    # path('document/<int:pk>/download3/',views.doc_detail2,name = 'document-download2'),
+    path('document/<int:pk>/download3/',views.download_document,name = 'document-download3'),
+
+
 ]
 
 

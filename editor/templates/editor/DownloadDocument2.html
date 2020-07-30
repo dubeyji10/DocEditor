@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title - {{ title }} </title>
+
+    <h1>
+            YOU'RE AT THE DOWNLOAD PAGE
+
+        <br>    downloading your document
+        <br> {{ request.path }}
+
+        <br> {{ request.get_full_path }}
+
+
+    </h1>
+
+            <div>
+
+                <div style="position:center;background-color: #b0f3ba;color:#ff2b67;">
+                    <a class="logo" href="{% url 'document-download3' data.id %}">- Third download button-</a>
+                    <br> ________________________________________________ <br>
+
+                </div>
+            </div>
+		<div>
+				data sent to this page : 
+				{{ data|safe }}
+		</div>
+</head>
+<body>
+
+</body>
+</html>

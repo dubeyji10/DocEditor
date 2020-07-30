@@ -41,7 +41,7 @@ html,body{
   min-width:300px;
   color: rgb(55, 248, 151);
   /*background: #010101;*/
-  background: linear-gradient(-10deg, rgba(222, 172, 172, 0.85) 8.30%, rgb(12, 21, 13) 80%, rgb(11, 21, 12) 100%);
+  background: linear-gradient(-10deg, rgba(121, 246, 236, 0.85) 8.30%, rgb(11, 21, 18) 80%, rgb(11, 21, 12) 100%);
 
   /* font-family: 'Indie Flower', serif; */
 }
@@ -71,7 +71,7 @@ html,body{
     -webkit-backface-visibility: hidden;
     -webkit-transform: translateZ(0) scale(1.0, 1.0);
     transform: translateZ(0);
-  background: #1B2030 url("guitar2.jpg") top center no-repeat;
+  /*background: #1B2030 url("guitar2.jpg") top center no-repeat;*/
   background-size:cover;
   background-attachment:fixed;
   animation: grow 60s  linear 10ms infinite;
